@@ -3,7 +3,7 @@ name: Extract 7z Archive
 on: 
   push:
     branches:
-      - main  # استخدم اسم الفرع الذي تريده، مثل "main" أو "master"
+      - main  # استخدم اسم الفرع الصحيح، مثل "main" أو "master"
 
 jobs:
   extract:
@@ -16,8 +16,14 @@ jobs:
       - name: Install p7zip
         run: sudo apt-get install -y p7zip-full
 
+      - name: List repository contents (Debugging)
+        run: ls -la
+
       - name: Extract 7z archive
-        run: 7z x sustainability_app V1.1.7z -o./extracted_files  # استبدل "yourfile.7z" بالاسم الفعلي لملفك
+        run: 7z x "sustainability_app V1.1.7z" -o./extracted_files || 7z x sustainability_app_V1.1.7z -o./extracted_files
+
+      - name: List extracted files (Debugging)
+        run: ls -la extracted_files
 
       - name: Commit extracted files
         run: |
