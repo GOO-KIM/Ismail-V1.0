@@ -17,7 +17,7 @@ jobs:
         run: sudo apt-get install -y p7zip-full
 
       - name: Extract 7z archive
-        run: 7z x yourfile.7z -o./extracted_files  # استبدل "yourfile.7z" بالاسم الفعلي لملفك
+        run: 7z x sustainability_app V1.1.7z -o./extracted_files  # استبدل "yourfile.7z" بالاسم الفعلي لملفك
 
       - name: Commit extracted files
         run: |
